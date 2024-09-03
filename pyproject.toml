@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "Project Babble"
+name = "Babble-App"
 version = "0.2"
 description = "Affordable and Fully Opensource Mouth Tracker for VR"
 authors = ["SummerSigh", "RedHawk989"]
@@ -18,17 +18,19 @@ pyserial = "^3.5"
 winotify = [ 
     { version = "^1.1.0", platform = 'win32' }
 ]
-onnxruntime-directml = "^1.15.0"
+onnxruntime = "^1.15.0"
+onnxruntime-directml = { version = "^1.15.0", platform = 'win32' }
 
 colorama = "^0.4.6"
-taskipy = "^1.10.4"
-
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.10.0"
 pyinstaller = "^5.6.2"
 flake8 = "^5.0.4"
+taskipy = "^1.10.4"
 
+[tool.poetry.scripts]
+babble = "babble_app:babbleapp:main"
 
 [tool.taskipy.tasks]
 dev = "python babbleapp.py"
