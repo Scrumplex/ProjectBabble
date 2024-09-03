@@ -1,7 +1,6 @@
 import numpy as np
-from math import log
 from enum import IntEnum
-from utils.misc_utils import PlaySound, SND_FILENAME, SND_ASYNC
+from .utils.misc_utils import PlaySound, SND_FILENAME, SND_ASYNC
 
 class CamId(IntEnum):
     CAM = 0

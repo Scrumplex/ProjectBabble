@@ -1,22 +1,17 @@
 
-from operator import truth
-from dataclasses import dataclass
 import sys
 import asyncio
 sys.path.append(".")
-from config import BabbleCameraConfig, BabbleSettingsConfig, BabbleConfig
+from .config import BabbleCameraConfig, BabbleSettingsConfig, BabbleConfig
 import queue
 import threading
 import numpy as np
 import cv2
-from enum import Enum
-from one_euro_filter import OneEuroFilter
-from utils.misc_utils import PlaySound, SND_FILENAME, SND_ASYNC
-import importlib
-from osc import Tab
-from osc_calibrate_filter import *
-from tab import CamInfo, CamInfoOrigin
-from babble_model_loader import *
+from .one_euro_filter import OneEuroFilter
+from .utils.misc_utils import PlaySound, SND_FILENAME, SND_ASYNC
+from .osc_calibrate_filter import *
+from .tab import CamInfo, CamInfoOrigin
+from .babble_model_loader import *
 import os
 os.environ["OMP_NUM_THREADS"] = "1"
 import onnxruntime as ort

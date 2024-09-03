@@ -21,14 +21,14 @@ import PySimpleGUI as sg
 import queue
 import requests
 import threading
-from babble_model_loader import *
-from camera_widget import CameraWidget
-from config import BabbleConfig
-from tab import CamInfo, Tab
-from osc import VRChatOSCReceiver, VRChatOSC
-from general_settings_widget import SettingsWidget
-from algo_settings_widget import AlgoSettingsWidget
-from utils.misc_utils import is_nt
+from .babble_model_loader import *
+from .camera_widget import CameraWidget
+from .config import BabbleConfig
+from .tab import Tab
+from .osc import VRChatOSCReceiver, VRChatOSC
+from .general_settings_widget import SettingsWidget
+from .algo_settings_widget import AlgoSettingsWidget
+from .utils.misc_utils import is_nt
 if is_nt:
     from winotify import Notification
 os.system('color')  # init ANSI color

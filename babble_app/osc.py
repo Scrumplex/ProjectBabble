@@ -1,10 +1,9 @@
 from pythonosc import udp_client, osc_server, dispatcher
-from utils.misc_utils import PlaySound, SND_FILENAME, SND_ASYNC
+from .utils.misc_utils import PlaySound, SND_FILENAME, SND_ASYNC
 import queue
 import threading
 from enum import IntEnum
-import time
-from config import BabbleConfig
+from .config import BabbleConfig
 
 class Tab(IntEnum):
     CAM = 0

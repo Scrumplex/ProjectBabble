@@ -7,8 +7,8 @@ import threading
 import time
 
 from colorama import Fore
-from config import BabbleConfig, BabbleSettingsConfig
-from utils.misc_utils import get_camera_index_by_name, list_camera_names
+from .config import BabbleConfig, BabbleSettingsConfig
+from .utils.misc_utils import get_camera_index_by_name, list_camera_names
 from enum import Enum
 
 WAIT_TIME = 0.1

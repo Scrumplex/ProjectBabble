@@ -1,5 +1,4 @@
 import os
-import typing
 from pygrabber.dshow_graph import FilterGraph
 
 is_nt = True if os.name == "nt" else False

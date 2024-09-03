@@ -1,16 +1,7 @@
 import os
-import json
 os.environ["OMP_NUM_THREADS"] = "1"
-import onnxruntime as ort
-import time
-import PySimpleGUI as sg
 import cv2
-import numpy as np
-from pythonosc import udp_client
-import utils.image_transforms as transforms
-import PIL.Image as Image
-from threading import Thread
-from one_euro_filter import OneEuroFilter
+import .utils.image_transforms as transforms
 
 def run_model(self): # Replace transforms n shit for the pfld model
     if self.runtime == "ONNX" or self.runtime == "Default (ONNX)":

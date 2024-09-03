@@ -5,12 +5,12 @@ from threading import Event, Thread
 import PySimpleGUI as sg
 
 import cv2
-from babble_processor import BabbleProcessor, CamInfoOrigin
-from camera import Camera, CameraState
-from config import BabbleConfig
-from landmark_processor import LandmarkProcessor
-from osc import Tab
-from utils.misc_utils import PlaySound, SND_FILENAME, SND_ASYNC, list_camera_names
+from .babble_processor import BabbleProcessor, CamInfoOrigin
+from .camera import Camera, CameraState
+from .config import BabbleConfig
+from .landmark_processor import LandmarkProcessor
+from .osc import Tab
+from .utils.misc_utils import PlaySound, SND_FILENAME, SND_ASYNC, list_camera_names
 
 
 class CameraWidget:

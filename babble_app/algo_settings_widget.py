@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 
-from config import BabbleSettingsConfig
-from osc import Tab
+from .config import BabbleSettingsConfig
+from .osc import Tab
 from queue import Queue
 from threading import Event
 
