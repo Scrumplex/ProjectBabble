@@ -89,7 +89,7 @@ class Camera:
             ):
                 self.current_capture_source = self.config.capture_source
 
-                if "COM" in str(self.config.capture_source) and self.config.capture_source not in self.camera_list:
+                if ("COM" in str(self.config.capture_source) or "/dev" in str(self.config.capture_source)) and self.config.capture_source not in self.camera_list:
                     if (
                             self.serial_connection is None
                             or self.camera_status == CameraState.DISCONNECTED
