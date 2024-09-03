@@ -1,13 +1,13 @@
 import os
 os.environ["OMP_NUM_THREADS"] = "1"
 import cv2
-import .utils.image_transforms as transforms
+from .utils.image_transforms import to_tensor, unsqueeze
 
 def run_model(self): # Replace transforms n shit for the pfld model
     if self.runtime == "ONNX" or self.runtime == "Default (ONNX)":
         frame = cv2.resize(self.current_image_gray, (256, 256))
-        frame = transforms.to_tensor(frame)
-        frame = transforms.unsqueeze(frame,0)
+        frame = to_tensor(frame)
+        frame = unsqueeze(frame,0)
         out = self.sess.run([self.output_name], {self.input_name: frame})
         output = out[0][0]
 
