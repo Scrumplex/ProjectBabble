@@ -30,7 +30,7 @@ flake8 = "^5.0.4"
 taskipy = "^1.10.4"
 
 [tool.poetry.scripts]
-babble = "babble_app:babbleapp:main"
+babble = "babble_app.babbleapp:main"
 
 [tool.taskipy.tasks]
 dev = "python babbleapp.py"
