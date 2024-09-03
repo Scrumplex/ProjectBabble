@@ -1,3 +1,4 @@
+import os
 import cv2
 import numpy as np
 import queue
@@ -10,6 +11,8 @@ from colorama import Fore
 from .config import BabbleConfig, BabbleSettingsConfig
 from .utils.misc_utils import get_camera_index_by_name, list_camera_names
 from enum import Enum
+
+is_nt = True if os.name == "nt" else False
 
 WAIT_TIME = 0.1
 
@@ -139,7 +142,7 @@ class Camera:
             if should_push and not self.capture_event.wait(timeout=0.02):
                 continue
             if self.config.capture_source is not None:
-                if "COM" in str(self.config.capture_source):
+                if ("COM" in str(self.config.capture_source) or "/dev" in str(self.config.capture_source)):
                     self.get_serial_camera_picture(should_push)
                 else:
                     self.get_cv2_camera_picture(should_push)
@@ -175,7 +178,7 @@ class Camera:
             #self.bps = image.nbytes
             if should_push:
                 self.push_image_to_queue(image, frame_number, self.fps)
-        except:
+        except Exception as e:
             print(
                 f"{Fore.YELLOW}[WARN] Capture source problem, assuming camera disconnected, waiting for reconnect.{Fore.RESET}")
             self.camera_status = CameraState.DISCONNECTED
@@ -265,8 +268,9 @@ class Camera:
                 xonxoff=False,
                 dsrdtr=False,
                 rtscts=False)
-            # Set explicit buffer size for serial.
-            conn.set_buffer_size(rx_size=32768, tx_size=32768)
+            if is_nt:
+                # Set explicit buffer size for serial.
+                conn.set_buffer_size(rx_size=32768, tx_size=32768)
 
             print(f"{Fore.CYAN}[INFO] ETVR Serial Tracker device connected on {port}{Fore.RESET}")
             self.serial_connection = conn
