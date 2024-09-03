@@ -8,7 +8,6 @@ import threading
 import numpy as np
 import cv2
 from .one_euro_filter import OneEuroFilter
-from .utils.misc_utils import PlaySound, SND_FILENAME, SND_ASYNC
 from .osc_calibrate_filter import *
 from .tab import CamInfo, CamInfoOrigin
 from .landmark_model_loader import *
@@ -25,11 +24,6 @@ def run_once(f):
     wrapper.has_run = False
     return wrapper
 
-
-async def delayed_setting_change(setting, value):
-    await asyncio.sleep(5)
-    setting = value
-    PlaySound('Audio/completed.wav', SND_FILENAME | SND_ASYNC)
 
 
 

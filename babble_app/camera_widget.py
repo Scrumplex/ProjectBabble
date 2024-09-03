@@ -4,13 +4,14 @@ from threading import Event, Thread
 
 import PySimpleGUI as sg
 
+from babble_app.audio import START_PATH, Audio
 import cv2
 from .babble_processor import BabbleProcessor, CamInfoOrigin
 from .camera import Camera, CameraState
 from .config import BabbleConfig
 from .landmark_processor import LandmarkProcessor
 from .osc import Tab
-from .utils.misc_utils import PlaySound, SND_FILENAME, SND_ASYNC, list_camera_names
+from .utils.misc_utils import list_camera_names
 
 
 class CameraWidget:
@@ -88,6 +89,8 @@ class CameraWidget:
             self.capture_queue,
             self.settings
         )
+
+        self.audio = Audio()
 
         self.roi_layout = [
             [
@@ -358,7 +361,7 @@ class CameraWidget:
 
         if event == self.gui_restart_calibration:
             self.babble_cnn.calibration_frame_counter = 1500
-            PlaySound('Audio/start.wav', SND_FILENAME | SND_ASYNC)
+            self.audio.play_audio(START_PATH)
 
         if event == self.gui_stop_calibration:
             self.babble_cnn.calibration_frame_counter = 0

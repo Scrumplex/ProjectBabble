@@ -1,5 +1,5 @@
+from babble_app.audio import START_PATH, Audio
 from pythonosc import udp_client, osc_server, dispatcher
-from .utils.misc_utils import PlaySound, SND_FILENAME, SND_ASYNC
 import queue
 import threading
 from enum import IntEnum
@@ -85,6 +85,7 @@ class VRChatOSC:
 
 class VRChatOSCReceiver:
     def __init__(self, cancellation_event: threading.Event, main_config: BabbleConfig, cams: []):
+        self.audio = Audio()
         self.config = main_config.settings
         self.cancellation_event = cancellation_event
         self.dispatcher = dispatcher.Dispatcher()
@@ -106,7 +107,7 @@ class VRChatOSCReceiver:
         if osc_value:
             for cam in self.cams:
                 cam.ransac.calibration_frame_counter = 300
-                PlaySound('Audio/start.wav', SND_FILENAME | SND_ASYNC)
+                self.audio.play_audio(START_PATH)
 
     def run(self):
         

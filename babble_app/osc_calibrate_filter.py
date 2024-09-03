@@ -1,12 +1,14 @@
+from babble_app.audio import COMPLETED_PATH, Audio
 import numpy as np
 from enum import IntEnum
-from .utils.misc_utils import PlaySound, SND_FILENAME, SND_ASYNC
 
 class CamId(IntEnum):
     CAM = 0
     SETTINGS = 1
 
 class cal():
+    def __init__(self) -> None:
+        self.audio = Audio()
 
     def cal_osc(self, array):
         #print(self.calibration_frame_counter)
@@ -39,7 +41,7 @@ class cal():
                 self.config_class.save()
                 print("[INFO] Calibration completed.")
 
-                PlaySound('Audio/completed.wav', SND_FILENAME | SND_ASYNC)
+                self.audio.play_audio(COMPLETED_PATH)
 
             if self.config.use_n_calibration:
                 self.calibration_frame_counter = None
