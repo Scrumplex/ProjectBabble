@@ -271,7 +271,8 @@ class Camera:
             print(f"{Fore.CYAN}[INFO] ETVR Serial Tracker device connected on {port}{Fore.RESET}")
             self.serial_connection = conn
             self.camera_status = CameraState.CONNECTED
-        except Exception:
+        except Exception as e:
+            print(e)
             print(f"{Fore.CYAN}[INFO] Failed to connect on {port}{Fore.RESET}")
             self.camera_status = CameraState.DISCONNECTED
 
