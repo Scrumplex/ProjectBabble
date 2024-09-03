@@ -2,7 +2,7 @@ import json
 import os.path
 import shutil
 
-from tab import Tab
+from .tab import Tab
 from pydantic import BaseModel
 from typing import Union
 
